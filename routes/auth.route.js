@@ -1,10 +1,10 @@
-import express from "express";
+import { Router } from "express";
 import { login, register } from "../controllers/auth.controllers.js";
 import { body } from "express-validator";
 import { validationResultExpress } from "../middlewares/validationResultExpress.js";
 
 //es un middlewares que trae express para manejar las rutas
-const router = express.Router();
+const router = Router();
 
 router.post(
   "/login",
@@ -16,8 +16,8 @@ router.post(
     body("password", "Mínimo 6 caracteres")
       .trim().isLength({ min: 6 }),
   ],
-  validationResultExpress,
-  login
+  validationResultExpress, //middelware
+  login //controlador
 );
 
 router.post(
@@ -37,8 +37,8 @@ router.post(
       }
     ),
   ],
-  validationResultExpress,
-  register
+  validationResultExpress, //middelware
+  register //controlador
 );
 
 export default router;
