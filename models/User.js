@@ -1,6 +1,5 @@
 import bcryptjs from "bcryptjs";
 import mongoose from "mongoose";
-/* const { Schema, model} = mongoose */
 
 const userSchema = new mongoose.Schema({
     email: {
