@@ -1,5 +1,4 @@
 import jwt from "jsonwebtoken";
-//crea un token cuando se inicia sesión
 export const generateToken = (uid) => {
     const expiresIn = 60 * 15;
 
@@ -11,7 +10,6 @@ export const generateToken = (uid) => {
     }
 };
 
-//cada vez que inicia sesión se almacena un token en las cooke¿ie
 export const generateRefreshToken = (uid, res) => {
     const expiresIn = 60 * 60 * 24 * 30;
     try {
@@ -29,15 +27,10 @@ export const generateRefreshToken = (uid, res) => {
     }
 };
 
-export const errorsValidateToken = (error) => {
-    switch (error) {
-        case "invalid signature":
-            return "firma no válida";
-        case "jwt expired":
-            return "Token expirado";
-        case "invalid token":
-            return "No invente token";
-        default:
-            return error;
-    }
+export const tokenVerificationErrors = {
+    "invalid signature": "La firma del JWT no es válida",
+    "jwt expired": "JWT expirado",
+    "invalid token": "Token no válido",
+    "No Bearer": "Utiliza formato Bearer",
+    "jwt malformed": "JWT formato no válido",
 };
