@@ -24,6 +24,7 @@ app.use(
                 "Error de CORS origin: " + origin + " No autorizado!"
             );
         },
+        credentials: true,
     })
 );
 
